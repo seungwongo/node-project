@@ -1,0 +1,36 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "This package is for learning node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seungwongo/node-project.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mysql",
+    "mongodb"
+  ],
+  "author": "Seungwon Go",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seungwongo/node-project/issues"
+  },
+  "homepage": "https://github.com/seungwongo/node-project#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.4",
+    "mysql": "^2.18.1",
+    "node-cron": "^3.0.0",
+    "nodemailer": "^6.6.3",
+    "response-time": "^2.3.2",
+    "xlsx": "^0.17.1"
+  }
+}
