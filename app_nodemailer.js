@@ -24,3 +24,22 @@ app.post('/api/email2', async (req, res) => {
   const r = await nodemailer.sendDemo(req.body.param);
   res.send(r); // 결과를 클라이언트로 보냄
 });
+
+app.get('/api/email3', async (req, res) => {
+  let content = 'BEGIN:VCALENDAR\r\nPRODID:-//ACME/DesktopCalendar//EN\r\nMETHOD:REQUEST\r\n...';
+
+  
+  let message = {
+      from: 'seungwon.go@gmail.com',
+      to: 'seungwon.go@returnvalues.com',
+      subject: 'Appointment',
+      text: 'Please see the attached appointment',
+      icalEvent: {
+          filename: 'invitation.ics',
+          method: 'request',
+          content: content
+      }
+  };
+  const r = await nodemailer.send(message);
+  res.send(r); // 결과를 클라이언트로 보냄
+});

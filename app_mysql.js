@@ -27,3 +27,17 @@ app.post('/api/customer/insert', async (req, res) => {
   const result = await mysql.query('customerInsert', req.body.param);
   res.send(result); // 결과를 클라이언트로 보냄
 });
+
+// 고객 정보 수정 라우터
+app.put('/api/customer/update', async (req, res) => {
+  console.log(req.body)
+  const result = await mysql.query('customerUpdate', req.body.param);
+  res.send(result); // 결과를 클라이언트로 보냄
+});
+
+// 고객 정보 삭제 라우터
+app.delete('/api/customer/delete/:id', async (req, res) => {
+  const {id} = req.params;  // 라우트 경로의 :id 에 맵핑되는 값
+  const result = await mysql.query('customerDelete', id);
+  res.send(result); // 결과를 클라이언트로 보냄
+});
