@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="msg" value="" />
+    <button onclick="sendMsg();">전송</button>
+    <button onclick="receiveMsg();">메시지 수신 시작</button>
+    <script
+      src="https://cdn.socket.io/4.2.0/socket.io.min.js"
+      integrity="sha384-PiBR5S00EtOj2Lto9Uu81cmoyZqR57XcOna1oAuVuIEjzj0wpqDVfD0JA9eXlRsj"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      const socket = io("http://localhost:3000"); // 도메인이 다른 경우
+
+      socket.on("connect", () => {
+        // 소켓 연결이 되면
+        console.log(socket.id); // 소켓 아이디 출력
+      });
+
+      socket.on("server2client", (msg) => {
+        // 서버로 부터 전송된 메시지 출력
+        console.log(msg);
+      });
+
+      // 클라이언트에서 서버로 메시지 전송
+      function sendMsg() {
+        let msg = document.getElementById("msg").value;
+
+        socket.emit("client2server", msg);
+      }
+
+      function receiveMsg() {
+        // 서버로 메시지 수신 요청
+        fetch("http://localhost:3000/socket", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then((response) => {
+          console.log(response);
+        });
+      }
+    </script>
+  </body>
+</html>

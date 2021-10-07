@@ -28,4 +28,3 @@ app.post("/customers/insert", async (req, res) => {
 
   res.send(r);
 });
-

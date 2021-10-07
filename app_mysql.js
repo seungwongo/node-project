@@ -41,3 +41,4 @@ app.delete('/api/customer/delete/:id', async (req, res) => {
   const result = await mysql.query('customerDelete', id);
   res.send(result); // 결과를 클라이언트로 보냄
 });
+ 
